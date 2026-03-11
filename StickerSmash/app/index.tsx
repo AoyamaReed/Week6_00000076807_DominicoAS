@@ -1,6 +1,17 @@
+import { useState } from "react";
 import { Text, View } from "react-native";
+import { CustomTextInput, NIMInput } from "./input";
 
 export default function Index() {
+  const [name, setName] = useState("");
+  const [NIM, setNIM] = useState("");
+
+  const handleChangeMyName = (value: string) => {
+    setName(value);
+  }
+  const handleChangeNIM = (NIMValue: string) => {
+    setNIM(NIMValue);
+  }
   return (
     <View
       style={{
@@ -9,8 +20,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Dominico Anthony Susanto - 00000076807</Text>
-      <Text>IF670_00000076807_W01</Text>
+      <Text>{name} - {NIM}</Text>
+      <CustomTextInput input={name} onChange={handleChangeMyName}/>
+      <NIMInput input={NIM} onChange={handleChangeNIM}/>
     </View>
   );
 }
